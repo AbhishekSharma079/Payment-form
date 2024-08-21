@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>payment form</title>
+    <link rel="stylesheet" href="element.css">
+    
+   
+  
+</head>
+<body>
+    <div class ="container">
+      <p align="center" ><img src="rbi.jpg" width="295" height="207"></p>
+
+    <form action="">
+        <h1 class="main_heading" ><u>Payment form</u></h1>
+        <marquee>
+          <font size="5" color="purple"><i>Get way of the success it word ....</i><b> various mode of payment is available.</b></font>
+        </marquee>
+        
+        <p>Required Fields are followed by *</p>
+        <h2> Contact Information </h2>
+        <p>Name: *  <input type="text" name="name" placeholder="Subash" required></p>
+        <fieldset> 
+        <legend>Gender * </legend> 
+        
+        <p>Male <input type="radio" name="Gender" id="Male"required></p>
+        <p>Female <input type="radio" name="Gender" id="Female"required></p>
+        </fieldset> 
+        <p>Address: <textarea name="Address" id="Address" cols="50" rows="6"></textarea></p>
+        <p>Email: * <input type="email" name="email" id="email"required></p>
+        <p>Pincode: *<input type="number" name="Pincode" id="Pincode"required></p>
+        <h2 >Payment Information</h2>
+        <p>Card Type: *
+          
+          <select name="card_type" id="card_type"required>
+            <option value= "">--select a card type--</option>
+           
+            <option value="paytm">paytm</option>
+            <option value="Rupay">Rupay</option>
+            <option value="Gpay">Gpay</option>
+            <option value="Mastercard">Mastercard</option>
+          </select>
+          <p>
+            Card Number: *<input type="number" name="card number" id="card number"required>
+            
+          </p>
+          <p>
+            Expiration Date: *<input type="date" name="exp_date" id="exp_date"required>
+          </p>
+          <p>
+            CVV : *<input type="password" name="cvv" id="cvv"required>
+          </p>
+          <input type="submit" value="Pay Now">
+          
+          <input type="submit" value="Reset" >
+        </p>
+    </form>
+    
+</body>
+<script>
+   function validateForm() {
+            const form = document.forms["paymentForm"];
+            const name = form["name"].value;
+            const gender = form["Gender"].value;
+            const email = form["email"].value;
+            const pincode = form["Pincode"].value;
+            const cardType = form["card_type"].value;
+            const cardNumber = form["card_number"].value;
+            const expDate = form["exp_date"].value;
+            const cvv = form["cvv"].value;
+
+            if (!name || !gender || !email || !pincode || !cardType || !cardNumber || !expDate || !cvv) {
+                alert("Please fill all required fields.");
+                return false;
+            }
+
+            if (!validateEmail(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            if (pincode.length !== 6) {
+                alert("Pincode should be 6 digits long.");
+                return false;
+            }
+
+            if (cardNumber.length < 16) {
+                alert("Card number should be at least 16 digits long.");
+                return false;
+            }
+
+            if (cvv.length !== 3) {
+                alert("CVV should be 3 digits long.");
+                return false;
+            }
+
+            return true;
+        }
+
+        function validateEmail(email) {
+            const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            return re.test(email);
+        }
+</script>
+</html>
